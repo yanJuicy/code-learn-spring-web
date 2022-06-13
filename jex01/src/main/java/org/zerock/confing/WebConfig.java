@@ -1,5 +1,7 @@
 package org.zerock.confing;
 
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebConfig extends 
@@ -18,6 +20,11 @@ public class WebConfig extends
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
+	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 	}
 
 }
